@@ -1,0 +1,11 @@
+#grafana datasource.yaml
+#/root/prometheus-grafana/grafana/datasource.yaml:/etc/grafana/provisioning/datasources/datasource.yaml
+
+apiVersion: 1
+datasources:
+- name: Prometheus
+  type: prometheus
+  url: http://localhost:9090 
+  isDefault: true
+  access: proxy
+  editable: true
