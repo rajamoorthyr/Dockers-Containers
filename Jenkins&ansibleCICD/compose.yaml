@@ -1,0 +1,29 @@
+---
+version: "3"
+
+services:
+        jenkins:
+                image: jenkins/jenkins
+                container_name: jenkins
+                hostname: jenkins
+                ports:
+                        - "8080:8080"
+                networks:
+                        - my-app-network
+                volumes:
+                        - "/home/jenkins/jenkins_home:/var/jenkins_home"
+
+        host:
+                build:
+                        context: /home/jenkins/host
+                hostname: host
+                container_name: host
+                image: host
+                networks:
+                        - my-app-network
+
+networks:
+        my-app-network:
+                ipam:
+                        config:
+                                - subnet: 10.0.0.0/16
